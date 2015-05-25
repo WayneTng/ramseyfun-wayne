@@ -19,4 +19,16 @@ RSpec.describe DishesController, type: :controller do
       expect(assigns(:dish).id).to eq dish.id
     end
   end
+
+  describe '#index#search' do
+    let!(:dishes){ create(:dish) }
+    it 'Search result match with database' do
+      get :index, product: attributes_for(:dish)
+      #expect{ assigns(dishes: :description.upcase) }.should include {dishes :description.upcase}
+      #assigns{ dishes: :description }.should include ("CHICKEN")
+      assigns(:dishes).each do |f|
+        f.description.upcase.should include "CHICKEN"
+      end
+    end
+  end
 end
