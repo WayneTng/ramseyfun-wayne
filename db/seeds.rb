@@ -14,3 +14,10 @@ Dish.create!(title: 'Chicken Rice',
              pax: 3,
              published: true,
              vegetarian: false)
+
+Dish.create!(title: 'Curry Chicken',
+             description: 'Receipe: Chicken wing, curry paste, salt, pepper, galic, pandan leave.',
+             cost: 50,
+             pax: 5,
+             published: true,
+             vegetarian: false)
