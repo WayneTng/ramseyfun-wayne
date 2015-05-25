@@ -5,3 +5,12 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+Dish.destroy_all
+
+Dish.create!(title: 'Chicken Rice',
+             description: 'Receipe: 1 Whole chicken, salt, pepper, galic, pandan leave.',
+             cost: 20,
+             pax: 3,
+             published: true,
+             vegetarian: false)
