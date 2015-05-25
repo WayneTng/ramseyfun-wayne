@@ -1,0 +1,7 @@
+.dishes
+  - if @dishes.any?  
+    - @dishes.each do |dish|
+      .title Title:  #{dish.title}
+      .cost Cost:  #{dish.cost}
+      .pax Pax:  #{dish.pax}
+      .vegetarian Vegetarian:  #{dish.vegetarian.yesno}
