@@ -12,11 +12,11 @@ RSpec.describe DishesController, type: :controller do
   end 
 
   describe '#show' do
-    let!(:dishes){create(:dish)}
+    let!(:dish){create(:dish)}
 
     it 'it get a product id to display' do
-      get :index, id: dishes
-      expect(assigns(:dishes).id).to eq dishes.id
+      get :show, id: dish
+      expect(assigns(:dish).id).to eq dish.id
     end
   end
 end
