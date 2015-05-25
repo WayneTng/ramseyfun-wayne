@@ -1,8 +1,15 @@
+h1 List of Dishes
+
 .dishes
   - if @dishes.any?  
     - @dishes.each do |dish|
-      .title Title:  #{dish.title}
-      .cost Cost:  #{dish.cost}
-      .pax Pax:  #{dish.pax}
-      .vegetarian Vegetarian:  #{dish.vegetarian.yesno}
-      .read_more = link_to('Read More', dish_path(dish.id))  
+      .row
+        .col-md-12
+          h2.title #{dish.title}
+          .cost Cost: $#{dish.cost}
+          .pax Pax:  #{dish.pax}
+          .vegetarian Vegetarian:  #{dish.vegetarian.yesno}
+          br
+          .read_more = link_to('Read More', dish_path(dish.id), class: 'btn btn-primary')
+
+      hr
