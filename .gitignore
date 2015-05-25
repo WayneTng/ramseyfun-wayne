@@ -7,6 +7,13 @@
 # Ignore bundler config.
 /.bundle
 
+# ignore ds_store
+*.DS_STORE
+
+#ignore .swo and .swp
+*.swo
+*.swp
+
 # Ignore the default SQLite database.
 /db/*.sqlite3
 /db/*.sqlite3-journal
