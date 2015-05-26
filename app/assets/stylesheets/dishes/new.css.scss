@@ -1,4 +1,8 @@
 #dishes-new {
+  .page_title{
+    width: 53%;
+    float:right;
+  }
   .formtastic {
     li {
       list-style-type: none;
@@ -8,5 +12,9 @@
     color: black;
     font-size: 100%;
     line-height: normal;
+  }
+  .button{
+    width: 53%;
+    float: right;
   }
 }
