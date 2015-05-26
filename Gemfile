@@ -10,6 +10,7 @@ gem 'pg'
 gem 'sass-rails', '~> 5.0'
 gem 'bootstrap-sass'
 gem 'formtastic'
+gem 'devise'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views
@@ -58,7 +59,7 @@ group :development, :test do
   gem 'awesome_print'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
-
+  gem 'letter_opener'
   # use pry for debugging
   gem 'pry'
   gem 'binding_of_caller'
