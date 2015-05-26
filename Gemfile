@@ -61,6 +61,7 @@ group :development, :test do
   gem 'spring'
   gem 'letter_opener'
   # use pry for debugging
+  gem 'capybara'
   gem 'pry'
   gem 'binding_of_caller'
 end
