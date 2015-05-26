@@ -21,14 +21,12 @@ RSpec.describe DishesController, type: :controller do
   end
 
   describe '#index#search' do
-    let!(:dishes){ create(:dish) }
+    let!(:non_curry_dish){ create(:dish) }
+    let!(:curry_dish){ create(:dish, title: "Curry chicken" , description: "Curry") }
+
     it 'Search result match with database' do
-      get :index, product: attributes_for(:dish)
-      #expect{ assigns(dishes: :description.upcase) }.should include {dishes :description.upcase}
-      #assigns{ dishes: :description }.should include ("CHICKEN")
-      assigns(:dishes).each do |f|
-        f.description.upcase.should include "CHICKEN"
-      end
+      get :index, search: {keyword: 'curry'}
+      expect(assigns(:dishes).first.description).to eq 'Curry'
     end
   end
 end

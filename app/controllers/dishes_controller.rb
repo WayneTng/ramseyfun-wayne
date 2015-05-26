@@ -2,8 +2,11 @@ class DishesController < ApplicationController
 
   def index
     @dishes = Dish.all
-   # @dishes = @dishes.published
-   # @dishes = @dishes.search_title_and_description(params[:description], params[:description])
+    @dishes = @dishes.published
+    if params[:search]
+      keywords = params[:search][:keyword]     
+      @dishes = @dishes.search_title_and_description(keywords)
+    end
   end
 
   def show
