@@ -1,0 +1,17 @@
+#dishes-new
+  .row
+    .col-md-12
+      -if @dish.new_record?
+        h1.page_title Create New Dish
+      -else
+        h1.page_title Edit Your Dish
+
+  = semantic_form_for @dish do |f|
+    .row
+      .col-md-12
+        = f.input :title
+        = f.input :description
+        = f.input :cost
+        = f.input :pax
+        = f.input :vegetarian
+        = f.action :submit
