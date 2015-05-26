@@ -9,8 +9,16 @@ html
     .container
       .row
         .col-md-12
-          .sign_up = link_to( 'Sign up', new_fan_registration_path )
-      p.notice #{ notice }
-      p.alert #{ alert } 
+          ul.nav.nav-pills.pull-right
+            - if fan_signed_in?
+              li.logout = link_to 'Logout', destroy_fan_session_path, method: :delete
+              li.update_profile = link_to 'Update Profile', edit_fan_registration_path
+            - else
+              li.login = link_to "Log in", new_fan_session_path
+              li.sign_up = link_to 'Sign up', new_fan_registration_path
+      - if notice
+        p.alert.alert-success #{ notice }
+      - if alert  
+        p.alert.alert-danger #{ alert } 
       = yield
 
