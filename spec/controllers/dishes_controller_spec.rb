@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe DishesController, type: :controller do
 
   describe '#index' do
-    let!(:dishes){create_list(:dish, 2)}
+    let!(:dishes) { create_list(:dish, 2) }
     
     it 'it get a list of dishes from product controller' do
       get :index
@@ -12,7 +12,7 @@ RSpec.describe DishesController, type: :controller do
   end 
 
   describe '#show' do
-    let!(:dish){create(:dish)}
+    let!(:dish) { create(:dish) }
 
     it 'it get a product id to display' do
       get :show, id: dish
@@ -21,11 +21,11 @@ RSpec.describe DishesController, type: :controller do
   end
 
   describe '#index#search' do
-    let!(:non_curry_dish){ create(:dish) }
-    let!(:curry_dish){ create(:dish, title: "Curry chicken" , description: "Curry") }
+    let!(:non_curry_dish) { create(:dish) }
+    let!(:curry_dish)     { create(:dish, title: "Curry chicken" , description: "Curry") }
 
     it 'Search result match with database' do
-      get :index, search: {keyword: 'curry'}
+      get :index, search: { keyword: 'curry' }
       expect(assigns(:dishes).first.description).to eq 'Curry'
     end
   end
