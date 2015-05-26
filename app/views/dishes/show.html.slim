@@ -4,15 +4,15 @@
 .row
   .col-md-12
     dl.dl-horizontal
-    dt Description
-    dd.description = @dish.description
-    dt Cost
-    dd.cost = @dish.cost
-    dt Number of pax
-    dd.pax = @dish.pax
-    dt Vegetarian?
-    dd.vegetarian = @dish.vegetarian.yesno
-    dt Date Created
-    dd.created_date = @dish.created_at.strftime("%d/%m/%Y")
-    br
-    dd.back = link_to('Back', :back, class: 'btn btn-primary')
+      dt Description
+      dd.description = @dish.description
+      dt Cost
+      dd.cost = @dish.cost
+      dt Number of pax
+      dd.pax = @dish.pax
+      dt Vegetarian?
+      dd.vegetarian = @dish.vegetarian.yesno
+      dt Date Created
+      dd.created_date = @dish.created_at.strftime("%d/%m/%Y")
+      br
+      dd.back = link_to('Back', :back, class: 'btn btn-primary')
