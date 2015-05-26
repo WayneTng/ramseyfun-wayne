@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :fans
   resources :dishes, only: [:index, :show]
   root 'dishes#index'
   # The priority is based upon order of creation: first created -> highest priority.
