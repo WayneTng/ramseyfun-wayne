@@ -1,5 +1,5 @@
 .row
-  .col-md-12
+  .col-md-12.text-center
     h1= @dish.title
 .row
   .col-md-12
@@ -7,7 +7,7 @@
       dt Description
       dd.description = @dish.description
       dt Cost
-      dd.cost = @dish.cost
+      dd.cost $ #{ @dish.cost }
       dt Number of pax
       dd.pax = @dish.pax
       dt Vegetarian?

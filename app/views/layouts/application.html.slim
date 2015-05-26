@@ -9,6 +9,8 @@ html
     .container
       .row
         .col-md-12
+          ul.col-md-2.nav.nav-pills
+            li.home = link_to 'Home', dishes_path
           ul.nav.nav-pills.pull-right
             - if fan_signed_in?
               li.create_dish = link_to 'Create Dish', new_dish_path

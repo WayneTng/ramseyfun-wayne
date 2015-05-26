@@ -1,10 +1,10 @@
 #dishes-index
   .row
-    .col-md-12
+    .col-md-3.col-md-offset-5
       h1 List of Dishes
   .row
     = semantic_form_for :search, url: dishes_path, html: { method: :get} do |search|
-      .col-md-5
+      .col-md-4.col-md-offset-4
         = search.input :keyword, label: false, as: :search, input_html: { placeholder: 'Enter your search here...', value: @keyword }
       .col-md-3
         = search.action :submit, button_html: {class: 'btn btn-primary'}
@@ -14,10 +14,14 @@
         .row
           .col-md-12
             h2.title #{dish.title}
-            .cost Cost: $#{dish.cost}
+            .cost Cost: $ #{dish.cost}
             .pax Pax:  #{dish.pax}
             .vegetarian Vegetarian:  #{dish.vegetarian.yesno}
             br
             .read_more = link_to('Read More', dish_path(dish.id), class: 'btn btn-primary')
 
         hr
+    - else
+      .row
+        .col-md-12.text-center
+            Sorry there is no dishes
