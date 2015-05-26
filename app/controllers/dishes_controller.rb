@@ -4,8 +4,8 @@ class DishesController < ApplicationController
     @dishes = Dish.all
     @dishes = @dishes.published
     if params[:search]
-      keywords = params[:search][:keyword]     
-      @dishes = @dishes.search_title_and_description(keywords)
+      @keyword = params[:search][:keyword]     
+      @dishes = @dishes.search_title_and_description(@keyword)
     end
   end
 
