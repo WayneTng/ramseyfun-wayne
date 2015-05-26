@@ -59,7 +59,7 @@ group :development, :test do
   gem 'awesome_print'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
-
+  gem 'letter_opener'
   # use pry for debugging
   gem 'pry'
   gem 'binding_of_caller'
