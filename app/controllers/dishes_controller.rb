@@ -22,8 +22,10 @@ def create
     @dish = Dish.new(dish_params.merge(fan_id: fan_id))
     @dish.published = true
     if @dish.save
+      flash[:notice] = "You have successfully created your dish!"
       redirect_to dishes_url
     else
+      flash[:alert] = "There is an error during creation, please try again."
       render :new
     end
   end
