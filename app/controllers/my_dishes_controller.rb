@@ -54,6 +54,7 @@ class MyDishesController < ApplicationController
                                  :cost,
                                  :pax,
                                  :vegetarian,
+                                 :published,
                                  :fan_id)
   end
 end
