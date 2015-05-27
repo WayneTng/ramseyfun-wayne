@@ -1,0 +1,21 @@
+#my-dishes-index
+  .row
+    .col-md-5.col-md-offset-5
+      h1 My Dishes
+  .my-dishes
+    - if @my_dishes.any?  
+      - @my_dishes.each do |dish|
+        .row
+          .col-md-12
+            h2.title #{dish.title}
+            .cost Cost: $ #{dish.cost}
+            .pax Pax:  #{dish.pax}
+            .vegetarian Vegetarian:  #{dish.vegetarian.yesno}
+            br
+            .read_more = link_to('Read More', my_dish_path(dish.id), class: 'btn btn-primary')
+
+        hr
+    - else
+      .row
+        .col-md-12.text-center
+            Sorry there is no dishes

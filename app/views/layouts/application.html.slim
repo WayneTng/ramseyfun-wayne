@@ -14,6 +14,7 @@ html
           ul.nav.nav-pills.pull-right
             - if fan_signed_in?
               li.create_dish = link_to 'Create Dish', new_dish_path
+              li.my_dishes = link_to 'My Dishes', my_dishes_path
               li.update_profile = link_to 'Update Profile', edit_fan_registration_path
               li.logout = link_to 'Logout', destroy_fan_session_path, method: :delete
             - else
