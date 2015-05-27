@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :fan do
     name 'Steven'
-    email 'Steven@example.com'
+    sequence(:email) { |n| "Iker-#{n}@example.com"}
     password '12345678'
 
     after(:create) { |fan| fan.confirm! }

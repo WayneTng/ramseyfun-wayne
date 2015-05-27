@@ -4,7 +4,7 @@ RSpec.describe DishesController, type: :controller do
 
   describe '#index' do
     let!(:dishes) { create_list(:dish, 2) }
-    
+
     it 'it get a list of dishes from product controller' do
       get :index
       expect(assigns(:dishes).size).to eq dishes.size
@@ -30,40 +30,45 @@ RSpec.describe DishesController, type: :controller do
     end
   end
 
-  describe '#new' do
-    it 'create a empty product' do
-      get :new
-      expect(assigns(:dish)).to be_a Dish
-    end
-  end
+  context 'Fan logged in' do
+    let!(:fan) { create(:fan) }
+    before { sign_in fan }
 
-  describe '#create' do
-    def do_request 
-     get :create, dish: params 
-    end
-
-    context 'Success create' do
-      let!(:params) { attributes_for(:dish, fan_id: create(:fan)) }
-      it 'save a dishes from create' do
-        expect{ do_request }.to change(Dish, :count).by(1)
-      end
-
-      it 'will redirect to index page' do
-        do_request
-        expect(response).to redirect_to dishes_url
+    describe '#new' do
+      it 'create a empty product' do
+        get :new
+        expect(assigns(:dish)).to be_a Dish
       end
     end
 
-    context 'Failure' do
-      let!(:params) { attributes_for(:dish, title: "", fan_id: create(:fan)) }
-
-      it 'fail to save a record' do
-        expect { do_request }.not_to change(Dish, :count)
+    describe '#create' do
+      def do_request 
+        get :create, dish: params 
       end
 
-      it 'fail it will render to #new' do
-        do_request
-        expect(response).to render_template :new
+      context 'Success create' do
+        let!(:params) { attributes_for(:dish) }
+        it 'save a dishes from create' do
+          expect{ do_request }.to change(Dish, :count).by(1)
+        end
+
+        it 'will redirect to index page' do
+          do_request
+          expect(response).to redirect_to dishes_url
+        end
+      end
+
+      context 'Failure' do
+        let!(:params) { attributes_for(:dish, title: "") }
+
+        it 'fail to save a record' do
+          expect { do_request }.not_to change(Dish, :count)
+        end
+
+        it 'fail it will render to #new' do
+          do_request
+          expect(response).to render_template :new
+        end
       end
     end
   end

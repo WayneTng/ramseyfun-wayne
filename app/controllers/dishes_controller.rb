@@ -1,4 +1,5 @@
 class DishesController < ApplicationController
+  before_action :authenticate_fan!, except: [:index, :show]
 
   def index
     @dishes = Dish.all
@@ -16,9 +17,9 @@ class DishesController < ApplicationController
   def new
     @dish = Dish.new
   end
-
-  def create
-    @dish = Dish.new(dish_params)
+def create
+    fan_id = current_fan.id
+    @dish = Dish.new(dish_params.merge(fan_id: fan_id))
     @dish.published = true
     if @dish.save
       redirect_to dishes_url

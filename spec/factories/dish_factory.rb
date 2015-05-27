@@ -6,5 +6,7 @@ FactoryGirl.define do
     pax         2
     vegetarian  false
     published   true
+
+    association :fan 
   end
 end
