@@ -2,7 +2,7 @@ class MyDishesController < ApplicationController
   before_action :authenticate_fan!
 
   def index
-    @my_dishes = Dish.where(fan: @fan)
+    @my_dishes = Dish.where(fan_id: fan_id)
   end
 
   def new
