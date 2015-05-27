@@ -5,7 +5,7 @@ RSpec.describe DishesController, type: :controller do
   describe '#index' do
     let!(:dishes) { create_list(:dish, 2) }
 
-    it 'it get a list of dishes from product controller' do
+    it 'it get a list of dishes from dish controller' do
       get :index
       expect(assigns(:dishes).size).to eq dishes.size
     end
