@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   devise_for :fans
-  resources :dishes
-  resources :my_dishes, only:[:index, :show]
+  resources :dishes, only:[:index, :show]
+  resources :my_dishes
   root 'dishes#index'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
