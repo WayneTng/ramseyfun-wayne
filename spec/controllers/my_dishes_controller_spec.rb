@@ -7,15 +7,11 @@ RSpec.describe MyDishesController, type: :controller do
     before { sign_in fan }
 
     describe '#index' do
-      let!(:my_dishes) { create_list(:dish, 4) }
+      let!(:fan) { create(:fan, :with_dishes) }
 
       it 'get a list of dishes that belongs to the users' do
-        my_dishes.each do |dish|
-          dish.update(fan: fan)
-        end
-        my_dishes
         get :index
-        expect(assigns(:my_dishes).size).to eq my_dishes.size 
+        expect(assigns(:my_dishes).size).to eq fan.dishes.size 
       end
     end
   end
