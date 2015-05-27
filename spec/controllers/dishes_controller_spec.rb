@@ -72,4 +72,12 @@ RSpec.describe DishesController, type: :controller do
       end
     end
   end
+
+  context 'Fail to login' do
+    
+    it 'should redirect back to login page' do
+      get :new
+      expect(response).to redirect_to new_fan_session_path
+    end
+  end
 end
