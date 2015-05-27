@@ -3,6 +3,7 @@ class MyDishesController < ApplicationController
 
   def index
     @my_dishes = Dish.where(fan_id: fan_id)
+    @my_dishes = @my_dishes.order(title: :asc)
   end
 
   def new
@@ -14,10 +15,9 @@ class MyDishesController < ApplicationController
     @my_dish = Dish.new(dish_params.merge(fan_id: fan_id))
     @my_dish.published = true
     if @my_dish.save
-      flash[:notice] = "You have successfully created your dish!"
-      redirect_to dishes_url
+      redirect_to dishes_url, notice: 'You have successfully created your dish!'
     else
-      flash[:alert] = "There is an error during creation, please try again."
+      flash.now[:alert] = 'There is an error during creation, please try again.'
       render :new
     end
   end

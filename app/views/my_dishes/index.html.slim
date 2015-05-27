@@ -18,7 +18,10 @@
             .button
               = link_to('Read More', dish_path(dish.id), class: 'btn btn-primary')
               = link_to('Edit My Dish', edit_my_dish_path(dish.id), class: 'btn btn-primary')
-
+              - if dish.published
+                = link_to('unpublish', my_dish_path(dish.id, dish: {published: false}), method: :patch, class: 'btn btn-primary') 
+              - else
+                = link_to('publish', my_dish_path(dish.id, dish: {published: true}), method: :patch, class: 'btn btn-primary')
         hr
     - else
       .row

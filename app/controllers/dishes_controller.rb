@@ -3,6 +3,8 @@ class DishesController < ApplicationController
 
   def index
     @dishes = Dish.published
+    @dishes = @dishes.order(created_at: :desc)
+
     if params[:search]
       @keyword = params[:search][:keyword]     
       @dishes = @dishes.search_title_and_description(@keyword)
