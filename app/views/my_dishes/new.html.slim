@@ -6,7 +6,8 @@
       -else
         h1.page_title Edit Your Dish
 
-  = semantic_form_for @my_dish, url: my_dishes_path do |f|
+  - url = @my_dish.new_record? ? my_dishes_path : my_dish_path(@my_dish)
+  = semantic_form_for @my_dish, url: url do |f|
     .row
       .col-md-12
         = f.input :title

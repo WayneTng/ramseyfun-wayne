@@ -2,7 +2,7 @@ class MyDishesController < ApplicationController
   before_action :authenticate_fan!
 
   def index
-    @my_dishes = Dish.where(fan_id: fan_id)
+    @my_dishes = Dish.where(fan: @fan)
   end
 
   def new
@@ -26,6 +26,18 @@ class MyDishesController < ApplicationController
     @my_dish = Dish.find(dish_id)
     render :new
   end
+
+  def update
+    @my_dish = Dish.find(dish_id)
+    if @my_dish.update(dish_params)
+      flash[:notice] = "You have Successfully Update your dish"
+      redirect_to my_dishes_url
+    else
+      flash.now[:alert] = "There's an error on updating, please try again."
+      render :new
+    end
+  end
+
   private
 
   def fan_id
