@@ -6,10 +6,12 @@
     dl.dl-horizontal
       dt Description
       dd.description = @dish.description
-      dt Cost
-      dd.cost $ #{ @dish.cost }
-      dt Number of pax
-      dd.pax = @dish.pax
+      - if @dish.cost
+        dt Cost
+        dd.cost $ #{ @dish.cost }
+      - if @dish.pax
+        dt Number of pax
+        dd.pax = @dish.pax
       dt Vegetarian?
       dd.vegetarian = @dish.vegetarian.yesno
       dt Date Created
