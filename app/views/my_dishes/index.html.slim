@@ -12,7 +12,7 @@
             .pax Pax:  #{dish.pax}
             .vegetarian Vegetarian:  #{dish.vegetarian.yesno}
             br
-            .read_more = link_to('Read More', my_dish_path(dish.id), class: 'btn btn-primary')
+            .read_more = link_to('Read More', dish_path(dish.id), class: 'btn btn-primary')
 
         hr
     - else
