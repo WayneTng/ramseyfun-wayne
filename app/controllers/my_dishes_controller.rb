@@ -22,6 +22,10 @@ class MyDishesController < ApplicationController
     end
   end
   
+  def edit
+    @my_dish = Dish.find(dish_id)
+    render :new
+  end
   private
 
   def fan_id

@@ -19,7 +19,7 @@ RSpec.describe MyDishesController, type: :controller do
     describe '#new' do
       it 'create a empty product' do
         get :new
-        expect(assigns(:dish)).to be_a Dish
+        expect(assigns(:my_dish)).to be_a Dish
       end
     end
 
@@ -51,6 +51,15 @@ RSpec.describe MyDishesController, type: :controller do
           do_request
           expect(response).to render_template :new
         end
+      end
+    end
+
+    describe '#edit' do
+      let!(:dish) { create(:dish) }
+
+      it 'get the dish id' do
+        get :edit, id: dish
+        expect(assigns(:my_dish).id).to eq dish.id
       end
     end
   end
