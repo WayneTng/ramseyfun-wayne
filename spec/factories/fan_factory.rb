@@ -4,7 +4,7 @@ FactoryGirl.define do
     sequence(:email) { |n| "Iker-#{n}@example.com"}
     password '12345678'
 
-    after(:create) { |fan| fan.confirm! }
+    after(:create) { |fan| fan.confirm }
 
     trait :with_dishes do
       after(:create) do |fan|
