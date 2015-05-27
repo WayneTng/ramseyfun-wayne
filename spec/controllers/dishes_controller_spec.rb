@@ -24,7 +24,7 @@ RSpec.describe DishesController, type: :controller do
   describe '#show' do
     let!(:dish) { create(:dish) }
 
-    it 'it get a product id to display' do
+    it 'it get a dish id to display' do
       get :show, id: dish
       expect(assigns(:dish).id).to eq dish.id
     end
