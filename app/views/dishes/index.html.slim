@@ -2,12 +2,7 @@
   .row
     .col-md-3.col-md-offset-5
       h1 List of Dishes
-  .row
-    = semantic_form_for :search, url: dishes_path, html: { method: :get} do |search|
-      .col-md-4.col-md-offset-4
-        = search.input :keyword, label: false, as: :search, input_html: { placeholder: 'Enter your search here...', value: @keyword }
-      .col-md-3
-        = search.action :submit, button_html: {class: 'btn btn-primary'}
+  = render partial: 'shared/search_form', locals: {keyword: @keyword}
   .dishes
     - if @dishes.any?  
       - @dishes.each do |dish|
@@ -26,4 +21,4 @@
     - else
       .row
         .col-md-12.text-center
-            Sorry there is no dishes
+            Sorry there are no dishes

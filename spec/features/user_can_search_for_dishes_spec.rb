@@ -9,7 +9,7 @@ RSpec.describe 'Public can search for dishes', type: :feature do
 
     it 'can search dishes' do
       visit '/'
-      expect(page).not_to have_content 'chicken'
+      expect(page).not_to have_content chicken_rice_dish.title
 
       click_on 'Log in'
       fill_in 'fan_email',        with: fan.email
@@ -24,12 +24,13 @@ RSpec.describe 'Public can search for dishes', type: :feature do
       fill_in 'dish_pax',         with: chicken_rice_dish.pax
       check 'dish_vegetarian'
       click_button 'Create Dish'
-      expect(page).to have_content 'chicken'
+      expect(page).to have_content chicken_rice_dish.title
 
+      click_on 'Home'
       fill_in 'search_keyword',   with: 'soup'
       click_on 'Submit Search'
 
-      expect(page).not_to have_content 'chicken'
+      expect(page).not_to have_content chicken_rice_dish.title
       expect(page).to have_content 'soup'
     end
   end
