@@ -23,12 +23,12 @@ class MyDishesController < ApplicationController
   end
   
   def edit
-    @my_dish = load_my_dish
+    @my_dish = get_my_dish
     render :new
   end
 
   def update
-    @my_dish = load_my_dish
+    @my_dish = get_my_dish
     if @my_dish.update(dish_params)
       flash[:notice] = "You have Successfully Update your dish"
       redirect_to my_dishes_url
@@ -58,12 +58,12 @@ class MyDishesController < ApplicationController
                                  :fan_id)
   end
 
-  def load_my_dish
+  def get_my_dish
     @my_dish ||= Dish.find(dish_id)
   end
 
   def check_ownership_of_my_dish!
-    if current_fan.id != load_my_dish.fan.id
+    if current_fan.id != get_my_dish.fan.id
       redirect_to my_dishes_url, notice: "You do not have the permission"
     end
   end
