@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe MyDishesController, type: :controller do
-
   context 'Fan Logged in' do
     let!(:fan) { create(:fan) }
     before { sign_in fan }
@@ -14,7 +13,6 @@ RSpec.describe MyDishesController, type: :controller do
         expect(assigns(:my_dishes).size).to eq fan.dishes.size 
       end
     end
-
 
     describe '#new' do
       it 'create a empty product' do
@@ -78,7 +76,6 @@ RSpec.describe MyDishesController, type: :controller do
       end
 
       context 'Success update' do
-        
         it 'update the dish' do
           expect(my_dish.reload.description).to eq 'Kammeh Soup'
         end
@@ -91,7 +88,6 @@ RSpec.describe MyDishesController, type: :controller do
   end
 
   context 'Fail to login' do
-    
     it 'should redirect back to login page' do
       get :new
       expect(response).to redirect_to new_fan_session_path
