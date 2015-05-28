@@ -67,7 +67,7 @@ RSpec.describe MyDishesController, type: :controller do
         patch :update, id: my_dish, dish: params
       end
 
-      let!(:my_dish) { create(:dish) }
+      let!(:my_dish) { create(:dish, fan: fan) }
       let!(:params) { attributes_for(:dish, description: 'Kammeh Soup') }
       before { do_request }
 
