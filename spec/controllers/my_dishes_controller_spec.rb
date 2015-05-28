@@ -37,7 +37,7 @@ RSpec.describe MyDishesController, type: :controller do
 
         it 'will redirect to index page' do
           do_request
-          expect(response).to redirect_to dishes_url
+          expect(response).to redirect_to my_dishes_url
         end
       end
 

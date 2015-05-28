@@ -5,10 +5,8 @@ class DishesController < ApplicationController
     @dishes = Dish.published
     @dishes = @dishes.order(created_at: :desc)
 
-    if params[:search]
-      @keyword = params[:search][:keyword]     
-      @dishes = @dishes.search_title_and_description(@keyword)
-    end
+    @keyword = search_keyword     
+    @dishes = @dishes.search_title_and_description(@keyword) if @keyword
   end
 
   def show
@@ -19,5 +17,9 @@ class DishesController < ApplicationController
 
   def dish_id
     params.require(:id)
+  end
+
+  def search_keyword
+    params.fetch(:search, {}).permit(:keyword)[:keyword]
   end
 end
